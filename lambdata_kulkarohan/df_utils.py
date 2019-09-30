@@ -7,5 +7,5 @@ from sklearn.metrics import confusion_matrix
 
 TEST_DF = pd.DataFrame([1, 2, 3])
 
-isna = pd.isna()
-confusion_matrix = confusion_matrix()
+ISNA = pd.isna()
+CONFUSION_MATRIX = confusion_matrix()
