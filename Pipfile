@@ -10,6 +10,7 @@ twine = "*"
 numpy = "*"
 pandas = "*"
 wheel = "*"
+twine = "*"
 
 [requires]
 python_version = "3.7"

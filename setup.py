@@ -3,6 +3,7 @@
 lambdata - a collection of data science helper functions for lambda school
 """
 import setuptools
+from distutils.core import setup
 
 REQUIRED = [
     "numpy",
@@ -11,7 +12,7 @@ REQUIRED = [
 
 with open("README.md", "r") as fh:
     LONG_DESCRIPTION = fh.read()
-    setuptools.setup(
+    setup(
     name="lambdata-kulkarohan",
     version = "0.1.4",
     author = "kulkarohan",
