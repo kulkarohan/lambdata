@@ -21,26 +21,39 @@ DF_ISNA = pd.DataFrame({
 DF_SPLIT = pd.DataFrame({'Date':['11/8/2011', '04/23/2008', '10/2/2019']})
 
 
-def isNA(df):
-    """ 
-    Input a DataFrame and isNA(df) will return the number of NaN values.
-
-    Use the already created DataFrame DF_ISNA to test.
+class Utils:
     """
-    print(df.isna().sum())
-    return df.isna().sum()
+    Utils - a class containing utilities functions for working with DataFrames
 
-def split_date(df):
-    """ 
-    Input a DataFrame with a single column of datetime values and label the
-    column 'Date'. Calling split_date(df) will split the datetime values each 
-    into their own column and add them to the DataFrame. 
-
-    Use the already created DataFrame DF_SPLIT to test.
+    1) import from lambdata_kulkarohan.df_utils
+    2) instantiate 
+    3) invoke
     """
-    df['Year'] = pd.to_datetime(df['Date']).dt.year
-    df['Month'] = pd.to_datetime(df['Date']).dt.month
-    df['Day'] = pd.to_datetime(df['Date']).dt.day
+    def __init__(self):
+        pass
+        
+    def isNA(self, df=DF_ISNA):
+        """ 
+        Input a DataFrame and isNA(df) will return the number of NaN values.
 
-    print(df)
-    return df
+        Pass with no parameters to test with the already created DataFrame 
+        DF_ISNA.
+        """
+        print(df.isna().sum())
+        return df.isna().sum()
+
+    def split_date(self, df=DF_SPLIT):
+        """ 
+        Input a DataFrame with a single column of datetime values and label the
+        column 'Date'. Calling split_date(df) will split the datetime values each 
+        into their own column and add them to the DataFrame. 
+
+        Pass with no parameters to test with the already created DataFrame
+        DF_SPLIT.
+        """
+        df['Year'] = pd.to_datetime(df['Date']).dt.year
+        df['Month'] = pd.to_datetime(df['Date']).dt.month
+        df['Day'] = pd.to_datetime(df['Date']).dt.day
+
+        print(df)
+        return df
