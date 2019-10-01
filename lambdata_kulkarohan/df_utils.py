@@ -8,8 +8,8 @@ from sklearn.metrics import confusion_matrix
 TEST_DF = pd.DataFrame([1, 2, 3])
 
 
-def ISNA(obj):
-    return pd.isna(obj)
+def isNA(a):
+    return a.isna().sum(ascending=False)
 
-def CONFUSION_MATRIX(obj):
-    return confusion_matrix(obj)
+def confusionMatrix(b, c):
+    return confusion_matrix(b, c)

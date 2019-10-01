@@ -6,14 +6,15 @@ import setuptools
 
 REQUIRED = [
     "numpy",
-    "pandas"
+    "pandas",
+    "sklearn"
 ]
 
 with open("README.md", "r") as fh:
     LONG_DESCRIPTION = fh.read()
     setuptools.setup(
     name="lambdata-kulkarohan",
-    version = "0.1.2",
+    version = "0.1.3",
     author = "kulkarohan",
     description = "a collection of data science helper functions",
     long_description = LONG_DESCRIPTION,
