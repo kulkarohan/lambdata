@@ -3,13 +3,19 @@ Utility functions for working with DataFrames
 """
 
 import pandas as pd 
-from sklearn.metrics import confusion_matrix
 
 TEST_DF = pd.DataFrame([1, 2, 3])
 
-
+# Check DataFrame for nulls
 def isNA(a):
     return a.isna().sum(ascending=False)
 
-def confusionMatrix(b, c):
-    return confusion_matrix(b, c)
+# Split date into multiple columns
+def split_date(df):
+    df = df.copy()
+
+    df['Year'] = df.dt.year
+    df['Month'] = df.dt.month
+    df['Day'] = df.dt.day
+
+    return df
