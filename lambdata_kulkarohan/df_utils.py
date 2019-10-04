@@ -1,24 +1,8 @@
 """
 Utility functions for working with DataFrames
-
-Sample Data
------------
-- DF_ISNA
-- DF_SPLIT
 """
-# Imports
 import pandas as pd 
 import numpy as np 
-
-
-# Sample DataFrame for isNA()
-DF_ISNA = pd.DataFrame({
-    "num_cars":[4, 1, 7, 2, np.nan],
-    "num_houses":[1, np.nan, 3, 2, 2]
-})
-
-# Sample DataFrame for split_date()
-DF_SPLIT = pd.DataFrame({'Date':['11/8/2011', '04/23/2008', '10/2/2019']})
 
 
 class Utils:
@@ -29,31 +13,49 @@ class Utils:
     2) instantiate 
     3) invoke
     """
-    def __init__(self):
-        pass
-        
-    def isNA(self, df=DF_ISNA):
+    def isNA(self, df):
         """ 
         Input a DataFrame and isNA(df) will return the number of NaN values.
 
         Pass with no parameters to test with the already created DataFrame 
         DF_ISNA.
         """
+        # Print the number of NaNs in each column of the DataFrame 
         print(df.isna().sum())
-        return df.isna().sum()
 
-    def split_date(self, df=DF_SPLIT):
+        # For testing purposes, return the number of NaNs in the entire DataFrame 
+        sum_na = df.isna().sum().sum()
+    
+        return sum_na
+
+    def split_date(self, df, column_name):
         """ 
-        Input a DataFrame with a single column of datetime values and label the
-        column 'Date'. Calling split_date(df) will split the datetime values each 
+        Input a single-column DataFrame of datetime values and input the column
+        name. Calling split_date(df) will split the datetime values each 
         into their own column and add them to the DataFrame. 
 
         Pass with no parameters to test with the already created DataFrame
         DF_SPLIT.
         """
-        df['Year'] = pd.to_datetime(df['Date']).dt.year
-        df['Month'] = pd.to_datetime(df['Date']).dt.month
-        df['Day'] = pd.to_datetime(df['Date']).dt.day
 
+        # Verify that the user input for column_name is a string
+        assert type(column_name) == str
+
+        df['Year'] = pd.to_datetime(df[column_name]).dt.year
+        df['Month'] = pd.to_datetime(df[column_name]).dt.month
+        df['Day'] = pd.to_datetime(df[column_name]).dt.day
+        
+        # Print the DataFrame with the newly added columns
         print(df)
-        return df
+
+        # For testing purposes, return the number of columns
+        # If the number is anything other than 4, the function did not work
+        num_columns = len(df.columns)
+
+        return num_columns
+
+if __name__ == "__main__":
+    util = Utils()
+
+    util.isNA()
+    util.split_date()
